@@ -6,6 +6,7 @@ import { connectDB } from "./src/config/db.config.js";
 import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from "cloudinary";
 import postRoutes from "./src/routes/post.routes.js";
+import notificationRoutes from "./src/routes/notification.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 app.listen(PORT, () => {
   connectDB();
