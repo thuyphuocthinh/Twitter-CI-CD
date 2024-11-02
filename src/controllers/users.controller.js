@@ -45,12 +45,6 @@ export const followUnfollowUser = async (req, res) => {
         await currentUser.updateOne({ $pull: { following: id } }),
         await userToModify.updateOne({ $pull: { followers: req.user._id } }),
       ]);
-      //   const newNotification = new Notification({
-      //     type: "follow",
-      //     from: req.user._id,
-      //     to: userToModify._id,
-      //   });
-      //   await newNotification.save();
       return res.status(200).json({ message: "User unfollowed succcessfully" });
       //   send noti
     } else {

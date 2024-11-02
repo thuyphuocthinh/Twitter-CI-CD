@@ -133,7 +133,7 @@ export const like = async (req, res) => {
 
 export const getAll = async (req, res) => {
   try {
-    const posts = await Post.find({ user: req.user._id })
+    const posts = await Post.find()
       .sort({
         createdAt: -1,
       })
