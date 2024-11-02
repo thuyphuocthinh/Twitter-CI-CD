@@ -12,10 +12,12 @@ export const getNotification = async (req, res) => {
       }
     );
 
-    const notifications = await Notification.find({ to: userId }).populate({
-      path: "from",
-      select: "username profileImage",
-    });
+    const notifications = await Notification.find({ to: userId })
+      .sort({ createdAt: -1 })
+      .populate({
+        path: "from",
+        select: "username profileImage",
+      });
 
     return res.status(200).json(notifications);
   } catch (error) {
