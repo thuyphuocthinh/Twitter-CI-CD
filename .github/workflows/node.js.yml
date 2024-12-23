@@ -25,4 +25,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: pm2 start twitter-backend
+    - run: pm2 restart twitter-backend
