@@ -34,9 +34,8 @@ jobs:
     - run: npm ci
 
     - name: Start the application with PM2
-      run: |
-        pm2 stop twitter-backend || true  # Stop any existing process (optional)
-        pm2 start app.js --name twitter-backend --env production
+      run:
+        pm2 start server.js --name twitter-backend --env production
 
     - name: Save PM2 process list and enable startup script
       run: |
