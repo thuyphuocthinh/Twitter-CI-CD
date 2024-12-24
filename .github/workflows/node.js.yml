@@ -3,7 +3,7 @@ name: Node.js CI/CD
 on:
   push:
     branches: [ "main" ]
-    
+
 jobs:
   build:
     runs-on: self-hosted
@@ -21,15 +21,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    - name: Set up environment variables
+    - name: Create .env file
       run: |
-        echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> $GITHUB_ENV
-        echo "PORT=${{ secrets.PORT }}" >> $GITHUB_ENV
-        echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> $GITHUB_ENV
-        echo "NODE_ENV=${{ secrets.NODE_ENV }}" >> $GITHUB_ENV
-        echo "CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }}" >> $GITHUB_ENV
-        echo "CLOUDINARY_API_KEY=${{ secrets.CLOUDINARY_API_KEY }}" >> $GITHUB_ENV
-        echo "CLOUDINARY_API_SECRET=${{ secrets.CLOUDINARY_API_SECRET }}" >> $GITHUB_ENV
+        echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> .env
+        echo "PORT=${{ secrets.PORT }}" >> .env
+        echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
+        echo "NODE_ENV=${{ secrets.NODE_ENV }}" >> .env
+        echo "CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }}" >> .env
+        echo "CLOUDINARY_API_KEY=${{ secrets.CLOUDINARY_API_KEY }}" >> .env
+        echo "CLOUDINARY_API_SECRET=${{ secrets.CLOUDINARY_API_SECRET }}" >> .env
 
     - run: npm ci
 
